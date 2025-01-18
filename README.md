@@ -1,5 +1,5 @@
 # Software Sorcerers Senior Capstone
-![Team Logo](https://github.com/aldenroy/Software_Sorcerers_Capstone/blob/main/Milestone1/team_logo.png) \
+![Team Logo](https://github.com/aldenroy/Software_Sorcerers_Capstone/blob/main/Team_Info/team_logo.png?raw=true) \
 **Software Sorcerers:** *Turning logic into legend*
 
 ## The Team
