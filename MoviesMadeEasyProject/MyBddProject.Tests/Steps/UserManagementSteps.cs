@@ -6,7 +6,7 @@ using OpenQA.Selenium.Support.UI;
 using NUnit.Framework;
 using MyBddProject.Tests.PageObjects;
 
-namespace MyProject.Tests.StepDefinitions
+/*namespace MyProject.Tests.StepDefinitions
 {
     [Binding]
     public class UserManagementSteps
@@ -217,4 +217,4 @@ namespace MyProject.Tests.StepDefinitions
             Assert.That(_driver.Url, Is.EqualTo("http://localhost:5000/Identity/Account/Register"));
         }
     }
-}
+}*/

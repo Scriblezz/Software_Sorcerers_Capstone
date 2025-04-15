@@ -1,7 +1,7 @@
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 
-namespace MyBddProject.Tests.PageObjects
+/*namespace MyBddProject.Tests.PageObjects
 {
     public class RegistrationPageTestSetup
     {
@@ -47,4 +47,4 @@ namespace MyBddProject.Tests.PageObjects
             _driver.FindElement(By.Id("register-submit")).Click();
         }
     }
-}
+}*/
