@@ -28,3 +28,18 @@ This project aims to teach and give us experience with how to design, plan, orga
 ### Vision Statement
 
 For users with multiple streaming services and a need for enhanced ADA accessibility, Movie Made Easy is an intuitive information system that consolidates movie searches into a single platform. Our solution simplifies content discovery, ensuring users can effortlessly locate the films they want across all their subscribed services.
+
+## Troubleshooting Example
+
+**What broke:** Movie searches intermittently returned empty results and the UI spinner never completed when the upstream movie catalog API timed out.
+
+**How we detected it:** Application logs now emit structured entries such as `ERROR 2026-01-15T20:04:11Z: SearchMovies external provider failure | requestId=0HMRHO1... | query='Inception'`, which surfaced in Application Insights while the UI was still waiting.
+
+**Debugging steps:**
+1. Reproduced the timeout by issuing the same search term and confirmed the HTTP 503 response with the correlated `requestId`.
+2. Traced the request through the new INFO logs to verify the call never reached the filtering phase, isolating the issue to the external `_movieService` call.
+3. Captured diagnostics from the downstream provider showing repeated network timeouts during peak load.
+
+**What was fixed:** Added explicit logging, validated inputs, and wrapped the `_movieService.SearchMoviesAsync` call with graceful error handling so the controller now returns a descriptive 503 response with the `requestId` instead of hanging the UI.
+
+**How it was verified:** Replayed the failing search, observed the user-friendly error payload in the browser network tab, and confirmed the logs show matching INFO start/finish events followed by the controlled ERROR entry, proving the workflow now fails loudly but safely.
